@@ -1,0 +1,45 @@
+robo_lab@lableft:~/coding/safety_demo$ ros2 launch safety_shield_node safety.launch.py
+[INFO] [launch]: All log files can be found below /home/robo_lab/.ros/log/2025-07-21-14-52-08-523786-lableft-1076775
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [safety_shield_node-1]: process started with pid [1076781]
+[INFO] [human_motion_tracker-2]: process started with pid [1076782]
+[safety_shield_node-1] [INFO] [1753109528.593742247] [safety_shield_node]: Requested shield_type='SSM'
+[safety_shield_node-1] [INFO] [1753109528.593849330] [safety_shield_node]: Using shield_type='SSM'
+[safety_shield_node-1] [2025-07-21 14:52:08.599] [info] Safety shield created.
+[safety_shield_node-1] [INFO] [1753109528.599643100] [safety_shield_node]: Safety Shield Node initialized
+[safety_shield_node-1] [WARN] [1753109528.600767369] [safety_shield_node]: Waiting for human measurements...
+[human_motion_tracker-2] [2025-07-21 14:52:09,147] ReceiverCat - INFO: Initialize receiver socket to 192.168.9.2:8085
+[human_motion_tracker-2] [2025-07-21 14:52:09,147] ReceiverCat - INFO: Socket initialized. Bind to 192.168.9.2:8085
+[human_motion_tracker-2] [INFO] [1753109529.168202732] [human_motion_tracker]: Shutting down UDP client thread.
+[human_motion_tracker-2] [2025-07-21 14:52:09,171] ReceiverCat - INFO: Socket closed.
+[human_motion_tracker-2] Traceback (most recent call last):
+[human_motion_tracker-2]   File "/home/robo_lab/coding/safety_demo/install/human_motion_tracker/lib/human_motion_tracker/human_motion_tracker", line 33, in <module>
+[human_motion_tracker-2]     sys.exit(load_entry_point('human-motion-tracker', 'console_scripts', 'human_motion_tracker')())
+[human_motion_tracker-2]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[human_motion_tracker-2]   File "/home/robo_lab/coding/safety_demo/build/human_motion_tracker/human_motion_tracker/human_motion_tracker.py", line 90, in main
+[human_motion_tracker-2]     rclpy.spin(node)
+[human_motion_tracker-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 244, in spin
+[human_motion_tracker-2]     executor.spin_once()
+[human_motion_tracker-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 839, in spin_once
+[human_motion_tracker-2]     self._spin_once_impl(timeout_sec)
+[human_motion_tracker-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 834, in _spin_once_impl
+[human_motion_tracker-2]     raise handler.exception()
+[human_motion_tracker-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/task.py", line 269, in __call__
+[human_motion_tracker-2]     self._handler.send(None)
+[human_motion_tracker-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 518, in handler
+[human_motion_tracker-2]     await call_coroutine()
+[human_motion_tracker-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 382, in _execute
+[human_motion_tracker-2]     await await_or_execute(tmr.callback)
+[human_motion_tracker-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 111, in await_or_execute
+[human_motion_tracker-2]     return callback(*args)
+[human_motion_tracker-2]            ^^^^^^^^^^^^^^^
+[human_motion_tracker-2]   File "/home/robo_lab/coding/safety_demo/build/human_motion_tracker/human_motion_tracker/human_motion_tracker.py", line 59, in publish_udp_data
+[human_motion_tracker-2]     joint_positions = np.array(data[2:38], dtype=np.float32).reshape(9, 3)
+[human_motion_tracker-2]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[human_motion_tracker-2] ValueError: cannot reshape array of size 36 into shape (9,3)
+[ERROR] [human_motion_tracker-2]: process has died [pid 1076782, exit code 1, cmd '/home/robo_lab/coding/safety_demo/install/human_motion_tracker/lib/human_motion_tracker/human_motion_tracker --ros-args -r __node:=human_motion_tracker'].
+[safety_shield_node-1] [WARN] [1753109530.601731602] [safety_shield_node]: Waiting for human measurements...
+^C[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[safety_shield_node-1] [INFO] [1753109531.347248637] [rclcpp]: signal_handler(signum=2)
+[INFO] [safety_shield_node-1]: process has finished cleanly [pid 1076781]
+[INFO] [launch]: process[safety_shield_node-1] was required: shutting down launched system

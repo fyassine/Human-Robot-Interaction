@@ -1,0 +1,7 @@
+**/*.bvh
+**/*blender.json
+**/*.world
+**/*.dae
+**/*.gz
+# except for those that are gazebo conform
+#!**/*_gazebo_conform.dae

@@ -1,0 +1,37 @@
+safety_shield_node:
+  ros__parameters:
+    # Timing
+    sample_time: 0.001
+    t_max: 10.0
+
+    # Shield behavior
+    shield_type: "SSM"  # options: "PFL", "SSM", "OFF".
+
+    # Initial robot pose
+    init.pose.x:    0.0
+    init.pose.y:    0.0
+    init.pose.z:    0.0
+    init.pose.roll: 0.0
+    init.pose.pitch: 0.0
+    init.pose.yaw:  0.0
+    init.qpos:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+
+    # Environment: single table AABB defined by min/max corners
+    # Table: width=182cm, length=249.5cm, height=83cm
+    # Robot at (0,0,0) is 103cm from right edge, 89cm from bottom edge
+    # Table center: x=0.12m, y=0.3575m, z=-0.415m
+    environment.table.min:
+      - -0.79     # Table left edge: 0.12 - 0.91 = -0.79m
+      - -0.89     # Table bottom edge: 0.3575 - 1.2475 = -0.89m  
+      - -0.83     # Table bottom: -0.415 - 0.415 = -0.83m
+    environment.table.max:
+      -  1.03     # Table right edge: 0.12 + 0.91 = 1.03m
+      -  1.6075   # Table top edge: 0.3575 + 1.2475 = 1.6075m
+      -  0.0      # Table top surface at robot level

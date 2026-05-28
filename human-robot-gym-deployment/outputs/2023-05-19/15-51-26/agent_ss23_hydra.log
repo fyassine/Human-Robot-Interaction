@@ -1,0 +1,4 @@
+[2023-05-19 15:51:26,213][agent][INFO] - Initalizing UDP communication and loading agent...
+[2023-05-19 15:51:28,650][AgentCat][INFO] - Initialize sender socket to 192.168.9.1:8001
+[2023-05-19 15:51:28,650][AgentCat][INFO] - Socket initialized. Connected to 192.168.9.1:8001
+[2023-05-19 15:51:28,651][ReceiverCat][INFO] - Initialize receiver socket to 192.168.9.2:8085

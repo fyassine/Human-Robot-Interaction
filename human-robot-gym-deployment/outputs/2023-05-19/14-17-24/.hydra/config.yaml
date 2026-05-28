@@ -1,0 +1,158 @@
+robot:
+  name: Schunk
+  controller_config_path: /home/ytd/BOXRL/human-robot-gym-ss-23/human_robot_gym/controllers/failsafe_controller/config/failsafe.json
+  robot_config_path: models/robots/config/schunk.json
+environment:
+  env_id: ss23_Env
+  robot_base_offset:
+  - 0.0
+  - 0.0
+  - 0.0
+  env_configuration: default
+  controller_configs: null
+  gripper_types: default
+  initialization_noise: default
+  use_camera_obs: false
+  use_object_obs: true
+  has_renderer: false
+  has_offscreen_renderer: false
+  render_camera: null
+  render_collision_mesh: false
+  render_visual_mesh: true
+  render_gpu_device_id: -1
+  control_freq: 5
+  horizon: 100
+  ignore_done: true
+  hard_reset: false
+  camera_names: frontview
+  camera_heights: 256
+  camera_widths: 256
+  camera_depths: false
+  camera_segmentations: null
+  renderer: mujoco
+  renderer_config: null
+  use_failsafe_controller: true
+  visualize_failsafe_controller: false
+  visualize_pinocchio: false
+  control_sample_time: 0.004
+  human_animation_names:
+  - '62_01'
+  - '62_03'
+  - '62_04'
+  - '62_07'
+  - '62_09'
+  - '62_10'
+  - '62_12'
+  - '62_13'
+  - '62_14'
+  - '62_15'
+  - '62_16'
+  - '62_18'
+  - '62_19'
+  base_human_pos_offset:
+  - 0.0
+  - 0.0
+  - 0.0
+  human_animation_freq: 120
+  human_rand:
+  - 0.0
+  - 0.0
+  - 0.0
+  safe_vel: 0.01
+  self_collision_safety: 0.012
+  seed: ${training.seed}
+  verbose: false
+  table_full_size:
+  - 1.5
+  - 2.0
+  - 0.05
+  table_friction:
+  - 1.0
+  - 0.005
+  - 0.0001
+  reward_scale: 1.0
+  reward_shaping: true
+  goal_dist: 0.1
+  collision_reward: 0
+  goal_reward: 1
+  object_placement_initializer: null
+  obstacle_placement_initializer: null
+  randomize_initial_pos: false
+  done_at_collision: false
+  done_at_success: true
+wrappers:
+  collision_prevention:
+    replace_type: 0
+    n_resamples: 20
+training:
+  n_envs: 10
+  n_steps: 1000000
+  save_freq: 500
+  test_only: false
+  load_episode: null
+  run_id: null
+  run_type: wandb
+  log_interval: 10
+  seed: 0
+  eval_seed: null
+  start_index: 0
+  n_test_episodes: 20
+  env_type: env
+  obs_keys:
+  - object-state
+  - goal_difference
+  expert_obs_keys: null
+  log_info_keys:
+  - n_goal_reached
+  - collision
+  - collision_type
+  - n_collisions
+  - n_collisions_static
+  - n_collisions_robot
+  - n_collisions_human
+  - n_collisions_critical
+  - timeout
+  - failsafe_interventions
+  - action_resamples
+  monitor_dir: null
+  vec_env_kwargs: null
+  monitor_kwargs: null
+  verbose: true
+algorithm:
+  name: PPO
+  policy: MlpPolicy
+  learning_rate: 7.0e-05
+  n_steps: 64
+  batch_size: 64
+  n_epochs: 20
+  gamma: 0.99
+  gae_lambda: 0.9
+  clip_range: 0.2
+  clip_range_vf: null
+  normalize_advantage: true
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  use_sde: false
+  sde_sample_freq: 4
+  target_kl: null
+  create_eval_env: false
+  policy_kwargs:
+    net_arch:
+    - 64
+    - 64
+    ortho_init: false
+    log_std_init: -2.7
+    full_std: true
+    use_expln: false
+    squash_output: true
+  verbose: 1
+  seed: ${training.seed}
+  device: auto
+  _init_setup_model: true
+wandb_run:
+  project: safe_human_robot_rl
+  entity: null
+  group: boxrl-ss-23
+  name: boxrl-ss-23
+  tags: null

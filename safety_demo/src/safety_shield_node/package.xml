@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>safety_shield_node</name>
+  <version>0.1.0</version>
+  <description>ROS 2 wrapper node for the Safety Shield library</description>
+
+  <maintainer email="you@example.com">Your Name</maintainer>
+  <license>MIT</license>
+
+  <!-- Build tool -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Core dependencies -->
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>Eigen3</depend>
+
+  <!-- For the new publishers/subscribers -->
+  <depend>visualization_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2_geometry_msgs</depend>
+
+  <!-- The Safety Shield library itself -->
+  <depend>safety_shield</depend>
+
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
